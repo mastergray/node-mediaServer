@@ -1,0 +1,8 @@
+{
+	"name"		  :	"FileServer",
+	"version"	  :	"0.0.1",
+	"description" :	"Simple file server for serving static files",
+	"dependencies":	{
+		"mime"	: "~1.2.7"
+	}
+}
