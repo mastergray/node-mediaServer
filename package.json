@@ -1,8 +1,10 @@
 {
-	"name"		  :	"FileServer",
-	"version"	  :	"0.0.1",
-	"description" :	"Simple file server for serving static files",
-	"dependencies":	{
-		"mime"	: "~1.2.7"
-	}
+  "name": "FileServer",
+  "version": "0.0.1",
+  "description": "Simple file server for serving static files",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "get-my-ip": "0.0.1",
+    "mime": "~1.2.7"
+  }
 }

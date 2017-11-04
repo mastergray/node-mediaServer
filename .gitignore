@@ -26,3 +26,9 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Node Modules #
+node_modules/
+
+# Test Folder #
+/test
