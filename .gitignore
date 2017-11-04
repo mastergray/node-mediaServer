@@ -10,6 +10,7 @@
 *.rar
 *.tar
 *.zip
+!dist.zip
 
 # Logs and databases #
 ######################
