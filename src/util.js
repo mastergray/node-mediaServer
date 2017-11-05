@@ -1,14 +1,8 @@
 // Dependencies
-var Promise = require('bluebird'),             // For using promises
-    fs = Promise.promisifyAll(require('fs')),	 // file system API using promises
-    exec = require('child_process').exec;           // for running external process (i.e. a shell command)
+var Promise = require('bluebird'),              // For using promises
+    fs = Promise.promisifyAll(require('fs')),   // file system API using promises
+    exec = require('child_process').exec;       // for running external process (i.e. a shell command)
 
-/**
- *
- * Method Namespace
- *
- */
-    
 module.exports = {
   
   // Returns promise for if directory exists:
@@ -27,7 +21,7 @@ module.exports = {
    return new Promise((resolve, reject) => {
      fs.stat(filepath, (err, stat) => {
        err !== null || !stat.isFile()
-        ? reject("404")
+        ? reject("404") 
         : resolve(filepath);
      });
    });
@@ -51,4 +45,5 @@ module.exports = {
       });
     });
   }
+
 };
