@@ -33,4 +33,4 @@ all the files in the directory being served. It's not pretty but it works.
 ## Acknowledgments
 This thing hasn't been well tested outside of my personal use - though for the year or so I used it to stream videos in my house it seemed to work pretty well.
 ## License
-This project is licensed under the MIT License - see the [LICENSE.md] (https://github.com/mastergray/node-mediaServer/blob/master/LICENSE) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/mastergray/node-mediaServer/blob/master/LICENSE) file for details
