@@ -4,7 +4,7 @@ A _really_ simple Node.js server that can "stream" media - i.e. process 206 part
 This is **not** a [DLNA](https://www.dlna.org/) or [UPnP](https://en.wikipedia.org/wiki/Universal_Plug_and_Play) server solution - it's orignal use case was so that I could stream movies from
 my computer to a ChromeCast. And to that end - it works (ar least when running from Ubuntu 12.04.5 LTS). I had envisioned using this as the basis for a more rhobust application - but [Plex](https://www.plex.tv/) exists so this is what it is.
 ## Setup
-To use this, you will need [Node.js](https://nodejs.org/en/download/). With Node.js installed, download and unzip dist.zip (which is essentially just all of the project files compressed for your convience). In the unzipped folder, run `npm install` to download the depedencies needed to run - nothing crazy mainly bluebird and a couple of minor utility things - and you should be good to go.
+To use this, you will need [Node.js](https://nodejs.org/en/download/). With Node.js installed, download and unzip [dist.zip](https://github.com/mastergray/node-mediaServer/raw/master/dist/dist.zip) (which is essentially just all of the project files compressed for your convenience). In the unzipped folder, run `npm install` to download the depedencies needed to run - nothing crazy mainly [bluebird](https://github.com/petkaantonov/bluebird) for handling promises and a couple of minor utility things - and you should be good to go.
 ## How To Use This Thing
 Running `node init.js` will start up the server. This script can take three optional arguments (no prefixes so order counts):
 - Directory path - what files should be served (defaults to directory _init.sj_ is running from)
