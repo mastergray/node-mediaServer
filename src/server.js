@@ -1,5 +1,5 @@
 // Dependencies
-var http = require('http'),	              // HTTP server and client functionality
+var http = require('http'),	          // HTTP server and client functionality
     Promise = require('bluebird'),        // For using promises
     getMyIP = require('get-my-ip'),       // determines local IP
     util = require('./util.js'),          // Utility methods for MediaServer
@@ -8,59 +8,61 @@ var http = require('http'),	              // HTTP server and client functionalit
   
    /**
     *
-    * Support Proceses
+    * Support Processes
     *
     */
    
-    // Sends file as response for a request of a given file path:
-    sendFile = (req, res) => (filepath) => {
-      req.headers.range
-        ? sendFileRange(req, res)(filepath) // Send partial content
-        : httpCode(res)("200")(filepath);   // All content sent
-    },
+   // Sends file as response for a request of a given file path:
+   sendFile = (req, res) => (filepath) => {
+	   req.headers.range
+	   	? sendFileRange(req, res)(filepath) // Send partial content
+       		: httpCode(res)("200")(filepath);   // All content sent
+   },
    
    // Sends partial content as response for a request of given file path:
    sendFileRange = (req, res) => (filepath) => {
     
-    var size = fs.statSync(filepath).size,
-        range = getContentRange(req);
+    	var size = fs.statSync(filepath).size,
+            range = getContentRange(req);
       
-      // If end of range is not a number, use file size to get end of content:
-		  if (isNaN(range.end)) {
-        httpCode(res)("206")(filepath, range.start, size - 1);
-        return;
-		  }
+		// If end of range is not a number, use file size to get end of content:
+		if (isNaN(range.end)) {
+        		httpCode(res)("206")(filepath, range.start, size - 1);
+        		return;
+		}
 
-      // If start of range is not a number, start content at 0:
-		  if (isNaN(range.start)) {
-	      httpCode(res)("206")(filepath, 0, range.end );
-		    return;
-		  }
+		// If start of range is not a number, start content at 0:
+		if (isNaN(range.start)) {
+			httpCode(res)("206")(filepath, 0, range.end );
+			return;
+		}
 
-      // Checks to see if start range is valid:
-		  if (range.start >= size || range.start < 0 || range.start > range.end) {
-		    httpCode(res)("416")(filepath);
-			  return;
-		  }
+		// Checks to see if start range is valid:
+		if (range.start >= size || range.start < 0 || range.start > range.end) {
+			httpCode(res)("416")(filepath);
+			return;
+		}
 		  
-		  // Checks to see if end range is valid:
-      if (range.end >= size || range.end <0) {
-        httpCode(res)("416")(filepath);
-			  return;
-      }
+		// Checks to see if end range is valid:
+     		if (range.end >= size || range.end <0) {
+        		httpCode(res)("416")(filepath);
+			return;
+      		}
 
-    // Sends partial content for given range:
-		httpCode(res)("206")(filepath, range.start, range.end);
-
+	// Sends partial content for given range:
+	httpCode(res)("206")(filepath, range.start, range.end);
+	   
   },
   
   // Returns content range as an object from a given request:
   getContentRange = (req) => {
-	  var range = req.headers.range.replace('bytes=','').split('-');
-		  return{
-			  "start":parseInt(range[0]),
-			  "end":parseInt(range[1])
-		  };
+	
+	var range = req.headers.range.replace('bytes=','').split('-');
+	
+	return {
+		"start":parseInt(range[0]),
+		"end":parseInt(range[1])
+	};
   },
   
   // Builds file list to return as a response:
@@ -114,7 +116,7 @@ var http = require('http'),	              // HTTP server and client functionalit
         util.ifFileExists(_dir + decodeURI(req.url))
           .then(send)
           .catch(onError);
-
+	      
       }
     
       // Write request to console:
